@@ -1,0 +1,58 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd" name="null" language="groovy" pageWidth="595" pageHeight="842" columnWidth="555" leftMargin="20" rightMargin="20" topMargin="20" bottomMargin="20" uuid="48c8b303-40a1-43d5-8abf-0b7947ac1098">
+	<queryString language="SQL">
+		<![CDATA[SELECT
+     detail_pemesanan.`sub_total` AS detail_pemesanan_sub_total,
+     detail_pemesanan.`qty` AS detail_pemesanan_qty,
+     menu.`nama_menu` AS menu_nama_menu,
+     menu.`harga` AS menu_harga,
+     pemesanan.`nota_pemesanan` AS pemesanan_nota_pemesanan,
+     pemesanan.`tgl_pemesanan` AS pemesanan_tgl_pemesanan,
+     pemesanan.`tgl_pengambilan_pesanan` AS pemesanan_tgl_pengambilan_pesanan,
+     pemesanan.`gtotal` AS pemesanan_gtotal,
+     pemesanan.`bayar` AS pemesanan_bayar,
+     pemesanan.`keterangan` AS pemesanan_keterangan,
+     pemesanan.`kembalian` AS pemesanan_kembalian,
+     pembeli.`nama_pembeli` AS pembeli_nama_pembeli
+FROM
+     `menu` menu INNER JOIN `detail_pemesanan` detail_pemesanan ON menu.`id_menu` = detail_pemesanan.`id_menu`
+     INNER JOIN `pemesanan` pemesanan ON detail_pemesanan.`nota_pemesanan` = pemesanan.`nota_pemesanan`
+     INNER JOIN `pembeli` pembeli ON pemesanan.`id_pembeli` = pembeli.`id_pembeli`]]>
+	</queryString>
+	<field name="detail_pemesanan_sub_total" class="java.lang.Float"/>
+	<field name="detail_pemesanan_qty" class="java.lang.Integer"/>
+	<field name="menu_nama_menu" class="java.lang.String"/>
+	<field name="menu_harga" class="java.lang.Integer"/>
+	<field name="pemesanan_nota_pemesanan" class="java.lang.String"/>
+	<field name="pemesanan_tgl_pemesanan" class="java.sql.Date"/>
+	<field name="pemesanan_tgl_pengambilan_pesanan" class="java.sql.Date"/>
+	<field name="pemesanan_gtotal" class="java.lang.Float"/>
+	<field name="pemesanan_bayar" class="java.lang.Float"/>
+	<field name="pemesanan_keterangan" class="java.lang.String"/>
+	<field name="pemesanan_kembalian" class="java.lang.Float"/>
+	<field name="pembeli_nama_pembeli" class="java.lang.String"/>
+	<background>
+		<band splitType="Stretch"/>
+	</background>
+	<title>
+		<band height="79" splitType="Stretch"/>
+	</title>
+	<pageHeader>
+		<band height="35" splitType="Stretch"/>
+	</pageHeader>
+	<columnHeader>
+		<band height="61" splitType="Stretch"/>
+	</columnHeader>
+	<detail>
+		<band height="125" splitType="Stretch"/>
+	</detail>
+	<columnFooter>
+		<band height="45" splitType="Stretch"/>
+	</columnFooter>
+	<pageFooter>
+		<band height="54" splitType="Stretch"/>
+	</pageFooter>
+	<summary>
+		<band height="42" splitType="Stretch"/>
+	</summary>
+</jasperReport>
